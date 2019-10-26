@@ -14,7 +14,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = "devbox-vpc"
+    Name        = "devbox-vpc"
     Environment = "${var.environment_tag}"
   }
 }
@@ -63,7 +63,7 @@ resource "aws_security_group" "devbox_allow_ssh" {
     protocol  = "tcp"
     # Please restrict your ingress to only necessary IPs and ports.
     # Opening to 0.0.0.0/0 can lead to security vulnerabilities.
-    cidr_blocks = ["74.136.72.59/32"]
+    cidr_blocks = ["74.136.72.59/32", "74.136.207.48/32"]
   }
 
   egress {
