@@ -4,5 +4,5 @@ The base AMI is built from an AMI that originates from Ubuntu 18.04 that has my 
 
 The build configuration should create a new AMI with Docker CE installed.
 
-* packer validate ami.json
-* packer build ami.json
+* packer validate ubuntu_ami_with_docker.json
+* packer build ubuntu_ami_with_docker.json
