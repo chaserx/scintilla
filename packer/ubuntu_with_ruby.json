@@ -1,0 +1,31 @@
+{
+  "variables": {
+    "region": "us-east-2"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "profile": "chaserx",
+      "region": "{{user `region`}}",
+      "instance_type": "t2.micro",
+      "source_ami": "ami-07e2451719af4d446",
+      "ssh_username": "ubuntu",
+      "ami_name": "customized-ubuntu-18.04-with-docker-and-ruby",
+      "ami_description": "Customized Ubuntu with Docker-CE with Ruby",
+      "ssh_keypair_name": "devbox",
+      "ssh_private_key_file": "/Users/chase/.ssh/devbox.pem",
+      "ssh_agent_auth": true,
+      "run_tags": {
+        "Name": "packer-builder-docker-customized",
+        "Tool": "Packer",
+        "Author": "chaserx"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "./install_ruby_et_al.sh"
+    }
+  ]
+}
