@@ -1,0 +1,36 @@
+{
+  "variables": {
+    "region": "us-east-2"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "profile": "chaserx",
+      "region": "{{user `region`}}",
+      "instance_type": "t2.micro",
+      "source_ami": "ami-0e3d63963c0491f47",
+      "ssh_username": "ubuntu",
+      "ami_name": "customized-ubuntu-18.04-with-docker",
+      "ami_description": "Customized Ubuntu with Docker-CE",
+      "ssh_keypair_name": "devbox",
+      "ssh_private_key_file": "/Users/chase/.ssh/devbox.pem",
+      "ssh_agent_auth": true,
+      "run_tags": {
+        "Name": "packer-builder-docker-customized",
+        "Tool": "Packer",
+        "Author": "chaserx"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "./bootstrap.sh"
+    },
+    {
+      "type": "file",
+      "source": "/Users/chase/.vimrc",
+      "destination": "~/.vimrc"
+    }
+  ]
+}
