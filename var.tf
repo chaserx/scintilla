@@ -15,11 +15,11 @@ variable "public_key_path" {
   default     = "~/.ssh/id_rsa.pub"
 }
 variable "instance_ami" {
-  description = "AMI for aws EC2 instance"
-  default     = "ami-0d5d9d301c853a04a"
+  description = "Ubuntu 18.04 with Docker AMI for AWS EC2 instance"
+  default     = "ami-07e2451719af4d446"
 }
 variable "instance_type" {
-  description = "type for aws EC2 instance"
+  description = "AWS EC2 instance type"
   default     = "t3a.medium"
 }
 variable "environment_tag" {

@@ -83,7 +83,7 @@ resource "aws_key_pair" "ec2key" {
   public_key = "${file(var.public_key_path)}"
 }
 
-resource "aws_instance" "testInstance" {
+resource "aws_instance" "DevInstance" {
   ami                    = "${var.instance_ami}"
   instance_type          = "${var.instance_type}"
   subnet_id              = "${aws_subnet.subnet_public.id}"
@@ -93,4 +93,8 @@ resource "aws_instance" "testInstance" {
     Environment = "${var.environment_tag}"
     Name        = "DevBox"
   }
+}
+
+output "instance_dns" {
+  value = ["${aws_instance.DevInstance.public_dns}"]
 }
